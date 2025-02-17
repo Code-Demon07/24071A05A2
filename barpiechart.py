@@ -1,0 +1,10 @@
+df_grouped = df.groupby("WHO_Region")["NewCases"].sum().reset_index()
+plt.figure(figsize=(10, 5))
+sns.barplot(x="WHO_Region", y="NewCases", data=df_grouped)
+plt.title("New Cases by WHO Region")
+plt.show()
+
+df_grouped.set_index("WHO_Region")["NewCases"].plot.pie(autopct="%1.1f%%", figsize=(8, 8))
+plt.title("New Cases by WHO Region")
+plt.ylabel("")  
+plt.show()

@@ -1,0 +1,11 @@
+df["Date"] = pd.to_datetime(df["Date"])
+df_weekly = df.groupby(pd.Grouper(key="Date", freq="W"))["Confirmed"].sum()
+
+plt.figure(figsize=(12, 6))
+plt.plot(df_weekly.index, df_weekly.values, marker="o", linestyle="-")
+plt.xlabel("Date")
+plt.ylabel("Confirmed Cases")
+plt.title("Weekly Trend of Confirmed Cases")
+plt.xticks(rotation=45)
+plt.grid()
+plt.show()
